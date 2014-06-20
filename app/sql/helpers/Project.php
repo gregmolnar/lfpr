@@ -159,7 +159,7 @@ function delete_project($entity_id) {
 }
 
 function load_project($id) {
-  return load_project_where("id = $id");
+  return load_project_where("id = ".(int)$id);
 }
 
 function load_project_where($where) {

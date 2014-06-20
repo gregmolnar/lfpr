@@ -34,9 +34,9 @@
   }
 
   public function deleteAction() {
-    $id = mysql_real_escape_string($this->request->getParam("id"));
+    $id = (int)$this->request->getParam("id");
     $userId = current_user()->id;
-    $project = load_project_where("id = '$id' and owner_id = '$userId'");
+    $project = load_project_where("id = $id and owner_id = '$userId'");
     if ($project) {
       delete_project($project->id);
       $this->flash->setSuccess("Delete successfull!");
